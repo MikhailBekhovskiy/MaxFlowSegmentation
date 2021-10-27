@@ -1,0 +1,28 @@
+1. Graph representation: (dict of dicts with lists)
+    G = { ... ,
+          'v': {adj1: [cap, flow], ...},
+          ...}
+
+2. Max-flow (Dinic)
+        2.1 Residual network representation: (dict of dicts with real numbers)
+            G_f = { ... ,
+                    'v': {adj1: res_cap1, ...},
+                    ...}
+
+        2.2 Layered network representation: (dict of sets)
+            L = { ... ,
+                  'v': [{adj1, ...}, {par1, ...}]
+                  ...}
+
+3. Image processing
+    3.1 Relation dictionaries
+        3.1.1 Pixel -> vertex :
+              Rel1 = {(x, y): vertex, ...}
+        3.1.2 Vertex -> pixel:
+              Rel2 = {vertex: (x, y), ...}
+    3.2 Input data
+        3.2.1 Image
+            PIL Image, size, pixel data
+        3.2.2 User-chosen sets
+            Object = {(x, y), ...} -> {vertex, ...} (by means of Rel1)
+            Background = {(x, y), ...} -> {vertex, ...} (by means of Rel1)

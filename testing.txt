@@ -1,0 +1,84 @@
+Results for test_1.txt: 
+	Max-flow value: 935
+	Calculations time:  0.0003840s
+Results for test_2.txt: 
+	Max-flow value: 2789
+	Calculations time:  0.0008872s
+Results for test_3.txt: 
+	Max-flow value: 2000000
+	Calculations time:  0.0002817s
+Results for test_4.txt: 
+	Max-flow value: 23
+	Calculations time:  0.0003063s
+Results for test_5.txt: 
+	Max-flow value: 256
+	Calculations time:  0.0007744s
+Results for test_6.txt: 
+	Max-flow value: 523
+	Calculations time:  0.0013027s
+Results for test_d1.txt: 
+	Max-flow value: 171
+	Calculations time:  0.0313067s
+Results for test_d2.txt: 
+	Max-flow value: 8023
+	Calculations time:  0.0289123s
+Results for test_d3.txt: 
+	Max-flow value: 9078
+	Calculations time:  0.6110073s
+Results for test_d4.txt: 
+	Max-flow value: 9072
+	Calculations time:  2.3292211s
+Results for test_d5.txt: 
+	Max-flow value: 3278
+	Calculations time:  0.0002570s
+Results for test_rd01.txt: 
+	Max-flow value: 24080
+	Calculations time:  0.0005168s
+Results for test_rd02.txt: 
+	Max-flow value: 37897
+	Calculations time:  0.0021166s
+Results for test_rd03.txt: 
+	Max-flow value: 68537
+	Calculations time:  0.0055175s
+Results for test_rd04.txt: 
+	Max-flow value: 62599
+	Calculations time:  0.0073427s
+Results for test_rd05.txt: 
+	Max-flow value: 153728
+	Calculations time:  0.0704963s
+Results for test_rd06.txt: 
+	Max-flow value: 224507
+	Calculations time:  0.2156266s
+Results for test_rd07.txt: 
+	Max-flow value: 730313
+	Calculations time:  7.0025220s
+Results for test_rl01.txt: 
+	Max-flow value: 15966
+	Calculations time:  0.0081975s
+Results for test_rl02.txt: 
+	Max-flow value: 36865
+	Calculations time:  0.0021081s
+Results for test_rl03.txt: 
+	Max-flow value: 63681
+	Calculations time:  0.0035183s
+Results for test_rl04.txt: 
+	Max-flow value: 55434
+	Calculations time:  0.0050039s
+Results for test_rl05.txt: 
+	Max-flow value: 138688
+	Calculations time:  0.0510492s
+Results for test_rl06.txt: 
+	Max-flow value: 141131
+	Calculations time:  0.0453017s
+Results for test_rl07.txt: 
+	Max-flow value: 204082
+	Calculations time:  0.1298416s
+Results for test_rl08.txt: 
+	Max-flow value: 211102
+	Calculations time:  0.1197191s
+Results for test_rl09.txt: 
+	Max-flow value: 218990
+	Calculations time:  0.1402516s
+Results for test_rl10.txt: 
+	Max-flow value: 482613
+	Calculations time:  1.4834977s

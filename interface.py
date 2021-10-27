@@ -5,26 +5,37 @@ from dinic import *
 
 
 def select_image():
-    # ask the user for the filename
-    global file_path, size, obj_pixels, bck_pixels, G, line
+    global file_path, fname, image, size, pn, intensities, obj_pixels,\
+         bck_pixels, newObj, newBck, prObj, prBck, line, color, flag, G, lamb,\
+         sigm, K
+
     file_path = filedialog.askopenfilename()
 
-    # only show the image if they chose something
     if file_path:
-        print(file_path)
-        # open the file
-        G = {}
-        obj_pixels = set()
-        bck_pixels = set()
-        for part in line:
-            canvas.delete(part)
+        # clearing vars
+        fname = get_fname(file_path)
         image = Image.open(file_path)
         size = image.size
-        # create the image object, and save it so that it
-        # won't get deleted by the garbage collector
-        canvas.image_tk = ImageTk.PhotoImage(image)
+        pn = pixel_node(size)
+        intensities = node_intensities(size, image.load())
+        obj_pixels = set()
+        bck_pixels = set()
+        newObj = set()
+        newBck = set()
+        prObj = {}
+        prBck = {}
+        for part in line:
+            canvas.delete(part)
+        line = []
+        color = ''
+        flag = ''
+        G = {}
+        lamb = 1
+        sigm = 1
+        K = None
 
-        # configure the canvas item to use this image
+        print(file_path)
+        canvas.image_tk = ImageTk.PhotoImage(image)
         canvas.itemconfigure(image_id, image=canvas.image_tk)
 
 
@@ -34,7 +45,8 @@ def get_x_and_y(event):
 
 
 def draw_line(event):
-    global lasx, lasy, obj_pixels, bck_pixels, flag, color, line
+    global lasx, lasy, obj_pixels, bck_pixels, newObj, newBck, flag, color,\
+        line
     id = canvas.create_line((lasx, lasy, event.x, event.y),
                             fill=color,
                             width=2)
@@ -44,6 +56,12 @@ def draw_line(event):
         obj_pixels.add((lasx, lasy))
     elif flag == 'background':
         bck_pixels.add((lasx, lasy))
+    elif flag == 'improving object':
+        newObj.add((lasx, lasy))
+    elif flag == 'improving background':
+        newBck.add((lasx, lasy))
+    else:
+        print('Choose mode')
 
 
 def flag_object():
@@ -58,9 +76,30 @@ def flag_background():
     color = 'blue'
 
 
+def flag_improve_object():
+    global flag, color
+    flag = 'improving object'
+    color = 'green'
+
+
+def flag_improve_background():
+    global flag, color
+    flag = 'improving background'
+    color = 'orange'
+
+
 def segmentize():
-    global file_path, save_path, obj_pixels, bck_pixels, size, G
-    G = gen_graph(file_path, obj_pixels, bck_pixels, neighbours=8)
+    global fname, image, size, intensities, obj_pixels,\
+         bck_pixels, prObj, prBck, G, lamb, sigm, K
+    rel = pixel_node(size)
+    obj = vertices(obj_pixels, rel)
+    bck = vertices(bck_pixels, rel)
+    prObj = histogram(intensities, obj)
+    prBck = histogram(intensities, bck)
+    data = gen_graph(image, obj, bck, prObj, prBck, intensities, neighbours=8,
+                     lamb=lamb, sigma=sigm)
+    G = data[0]
+    K = data[1]
     G_f = dinic(G, 's', 't')
     segments = min_cut(G_f, 's', 't')
     res = build_segmented(segments, size)
@@ -68,29 +107,67 @@ def segmentize():
     res.save(f'{save_path}' + fname + '.jpg')
 
 
-app = Tk()
-app.geometry('1920x1280')
-obj_pixels = set()
-bck_pixels = set()
+def improve():
+    global G, newObj, newBck, K, prObj, prBck, pn, intensities, lamb
+    mod_graph(G, newObj, newBck, pn, K, lamb, prObj, prBck, intensities)
+    G_f = dinic(G, 's', 't')
+    segments = min_cut(G_f, 's', 't')
+    res = build_segmented(segments, size)
+    fname = get_fname(file_path)
+    res.save(f'{save_path}' + fname + '.jpg')
+
+
+# global variables.
 save_path = '/home/mike/Desktop/graphproject/my_proj/segmented_images/'
 file_path = ''
+fname = ''
+
+image = None
 size = ()
+pn = {}
+intensities = {}
+obj_pixels = set()
+bck_pixels = set()
+newObj = set()
+newBck = set()
+prObj = {}
+prBck = {}
+
 line = []
-flag = 'object'
-color = 'red'
+flag = ''
+color = ''
+
 G = {}
-canvas = Canvas(app, bg='white', height=800, width=1000)
+lamb = 1
+sigm = 1
+K = None
+
+app = Tk()
+app.geometry('1200x1000')
+
+canvas = Canvas(app, bg='white', height=700, width=1000)
 canvas.pack()
 image_id = canvas.create_image(0, 0, anchor="nw")
+canvas.bind('<Button-1>', get_x_and_y)
+canvas.bind('<B1-Motion>', draw_line)
+
 btn = ttk.Button(app, text='Select file', command=select_image)
-btn.pack()
 btn1 = ttk.Button(app, text='Object pixels selection', command=flag_object)
 btn2 = ttk.Button(app, text='Background pixels selection',
                   command=flag_background)
+btn3 = ttk.Button(app, text='RUN', command=segmentize)
+btn4 = ttk.Button(app, text="Add object pixels for improvement",
+                  command=flag_improve_object)
+btn5 = ttk.Button(app, text="Add background pixels for improvement",
+                  command=flag_improve_background)
+btn6 = ttk.Button(app, text='Improve segmentation', command=improve)
+
+btn.pack()
 btn1.pack()
 btn2.pack()
-btn3 = ttk.Button(app, text='RUN', command=segmentize)
 btn3.pack()
-canvas.bind('<Button-1>', get_x_and_y)
-canvas.bind('<B1-Motion>', draw_line)
+btn4.pack()
+btn5.pack()
+btn6.pack()
+
 app.mainloop()

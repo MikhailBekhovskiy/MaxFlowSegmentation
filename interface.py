@@ -69,7 +69,7 @@ def segmentize():
 
 
 app = Tk()
-app.geometry('650x650')
+app.geometry('1920x1280')
 obj_pixels = set()
 bck_pixels = set()
 save_path = '/home/mike/Desktop/graphproject/my_proj/segmented_images/'
@@ -79,7 +79,7 @@ line = []
 flag = 'object'
 color = 'red'
 G = {}
-canvas = Canvas(app, bg='white', height=500, width=500)
+canvas = Canvas(app, bg='white', height=800, width=1000)
 canvas.pack()
 image_id = canvas.create_image(0, 0, anchor="nw")
 btn = ttk.Button(app, text='Select file', command=select_image)

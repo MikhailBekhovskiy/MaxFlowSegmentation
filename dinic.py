@@ -11,51 +11,30 @@ def add_antiparallel(G):
         for u in G[v]:
             if v not in G[u]:
                 G[u][v] = [0, 0]
-    # print("Graph prepared")
-
-
-# necessary for layered network cleaning procedure
-def has_incoming(G, v):
-    for u in G:
-        if v in G[u]:
-            return True
-    return False
-
-
-def incoming(G, v):
-    res = []
-    for u in G[v][1]:
-        res.append((u, v))
-    return res
+    print("Graph prepared")
 
 
 # 2. max-flow utility
 # this function not only modifies flow values,
 # but reforms residual network accordingly as well
 # returns list of saturated edges
-def push_flow(G, res, layered, path):
-    min = float('inf')
+def push_flow(G, res, layered, path, value):
     sat = []
     for i in range(len(path) - 1):
         v = path[i]
-        u = path[i + 1]
-        if res[v][u] < min:
-            min = res[v][u]
-    for i in range(len(path) - 1):
-        v = path[i]
         u = path[i+1]
-        G[v][u][1] += min
-        G[u][v][1] -= min
-        res[v][u] -= min
+        G[v][u][1] += value
+        G[u][v][1] -= value
+        res[v][u] -= value
         if res[v][u] == 0:
             sat.append((v, u))
             del res[v][u]
             layered[v][0].discard(u)
             layered[u][1].discard(v)
         if v in res[u]:
-            res[u][v] += min
+            res[u][v] += value
         else:
-            res[u][v] = min
+            res[u][v] = value
     # print(f'Pushed flow {min}')
     return sat
 
@@ -146,15 +125,19 @@ def lay_gen(G, s, t):
 
 
 # Choosing ANY path in layered network
-def get_path(layered, s, t):
+def get_path(layered, g_f, s, t):
+    min = float('inf')
     path = [s]
     elem = s
     while elem != t:
-        candidates = list(layered[elem][0])
-        path.append(candidates[0])
-        elem = candidates[0]
+        v = elem
+        u = list(layered[elem][0])[0]
+        if g_f[v][u] < min:
+            min = g_f[v][u]
+        path.append(u)
+        elem = u
     # print(f'Path found: {path}')
-    return path
+    return path, min
 
 
 # 2.1.1 cleaning layered network
@@ -180,11 +163,11 @@ def left_pass(L, Q_l):
         # print(L)
         if v in L:
             if L[v][0] == set():
-                income = incoming(L, v)
+                income = L[v][1]
                 del L[v]
-                for edge in income:
-                    Q_l.append(edge)
-                    L[edge[0]][0].discard(edge[1])
+                for head in income:
+                    Q_l.append((head, v))
+                    L[head][0].discard(v)
 
 
 def cleaning(L, sat):
@@ -195,7 +178,7 @@ def cleaning(L, sat):
     if L == {}:
         print("End of phase")
         return 'vanished'
-    print('Continuing phase')
+    # print('Continuing phase')
     return 'continue'
 
 
@@ -206,9 +189,9 @@ def dinic(G, s, t):
     print('initialization done')
     while L != {}:
         # print(L)
-        path = get_path(L, s, t)
+        path, val = get_path(L, G_f, s, t)
         # print(path)
-        sat = push_flow(G, G_f, L, path)
+        sat = push_flow(G, G_f, L, path, val)
         # print(sat)
         # print(L)
         res = cleaning(L, sat)

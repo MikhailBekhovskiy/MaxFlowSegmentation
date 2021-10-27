@@ -140,8 +140,8 @@ def graph_skeleton_8(relation, size, intensities, sigma=1):
     return G
 
 
-def gen_graph(image, obj, bck, prObj, prBck, intenses, neighbours=4,
-              lamb=1, sigma=1):
+def gen_graph(image, obj, bck, prObj, prBck, worst_cases, intenses,
+              neighbours=4, lamb=1, sigma=1):
     size = image.size
     pixels = image.load()
     rel_pn = pixel_node(size)
@@ -156,7 +156,8 @@ def gen_graph(image, obj, bck, prObj, prBck, intenses, neighbours=4,
         elif v in bck:
             G['s'][v][0] = 0
         else:
-            G['s'][v][0] = lamb * regional_penalty(prBck, intenses, v)
+            G['s'][v][0] = lamb * regional_penalty(prBck, intenses, v,
+                                                   worst_cases[1])
     for v in G:
         if v != 's' and v != 't':
             if v in obj:
@@ -164,21 +165,25 @@ def gen_graph(image, obj, bck, prObj, prBck, intenses, neighbours=4,
             elif v in bck:
                 G[v]['t'][0] = K
             else:
-                G[v]['t'][0] = lamb * regional_penalty(prObj, intenses, v)
+                G[v]['t'][0] = lamb * regional_penalty(prObj, intenses, v,
+                                                       worst_cases[0])
     return G, K
 
 
-def mod_graph(G, newObj, newBck, rel_pn, K, lamb, prObj, prBck, intensities):
+def mod_graph(G, newObj, newBck, rel_pn, K, lamb, prObj, prBck, worst_cases,
+              intensities):
     for pix in newObj:
         node = rel_pn[(pix[0], pix[1])]
         G['s'][node][0] += K + lamb * regional_penalty(prObj, intensities,
-                                                       node)
-        G[node]['t'][0] += lamb * regional_penalty(prBck, intensities, node)
+                                                       node, worst_cases[0])
+        G[node]['t'][0] += lamb * regional_penalty(prBck, intensities, node,
+                                                   worst_cases[1])
     for pix in newBck:
         node = rel_pn[(pix[0], pix[1])]
-        G['s'][node][0] += lamb * regional_penalty(prObj, intensities, node)
+        G['s'][node][0] += lamb * regional_penalty(prObj, intensities, node,
+                                                   worst_cases[0])
         G[node]['t'][0] += K + lamb * regional_penalty(prBck, intensities,
-                                                       node)
+                                                       node, worst_cases[1])
 
 
 def check_prob(distr):

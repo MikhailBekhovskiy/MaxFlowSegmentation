@@ -1,4 +1,4 @@
-from tkinter import Tk, Canvas, ttk, filedialog
+from tkinter import Tk, Canvas, ttk, filedialog, Frame, Entry
 from PIL import Image, ImageTk
 from images import *
 from dinic import *
@@ -7,7 +7,7 @@ from dinic import *
 def select_image():
     global file_path, fname, image, size, pn, intensities, obj_pixels,\
          bck_pixels, newObj, newBck, prObj, prBck, line, color, flag, G, lamb,\
-         sigm, K
+         sigm, K, neigh, minimorumObj, minimorumBck
 
     file_path = filedialog.askopenfilename()
 
@@ -22,6 +22,8 @@ def select_image():
         bck_pixels = set()
         newObj = set()
         newBck = set()
+        minimorumObj = None
+        minimorumBck = None
         prObj = {}
         prBck = {}
         for part in line:
@@ -32,6 +34,7 @@ def select_image():
         G = {}
         lamb = 1
         sigm = 1
+        neigh = 4
         K = None
 
         print(file_path)
@@ -64,6 +67,30 @@ def draw_line(event):
         print('Choose mode')
 
 
+def change_lamb():
+    global lamb
+    res = lambda_entry.get()
+    if res != '':
+        lamb = float(res)
+
+
+def change_sigm():
+    global sigm
+    res = sigma_entry.get()
+    if res != '':
+        sigm = float(res)
+
+
+def switch_neighbours4():
+    global neigh
+    neigh = 4
+
+
+def switch_neighbours8():
+    global neigh
+    neigh = 8
+
+
 def flag_object():
     global flag, color
     flag = 'object'
@@ -90,14 +117,18 @@ def flag_improve_background():
 
 def segmentize():
     global fname, image, size, intensities, obj_pixels,\
-         bck_pixels, prObj, prBck, G, lamb, sigm, K
+         bck_pixels, prObj, prBck, G, lamb, sigm, neigh, K,\
+         minimorumBck, minimorumObj
     rel = pixel_node(size)
     obj = vertices(obj_pixels, rel)
     bck = vertices(bck_pixels, rel)
     prObj = histogram(intensities, obj)
+    minimorumObj = worse_than_worst(prObj)
     prBck = histogram(intensities, bck)
-    data = gen_graph(image, obj, bck, prObj, prBck, intensities, neighbours=8,
-                     lamb=lamb, sigma=sigm)
+    minimorumBck = worse_than_worst(prBck)
+    data = gen_graph(image, obj, bck, prObj, prBck,
+                     (minimorumObj, minimorumBck), intensities,
+                     neighbours=neigh, lamb=lamb, sigma=sigm)
     G = data[0]
     K = data[1]
     G_f = dinic(G, 's', 't')
@@ -110,8 +141,10 @@ def segmentize():
 
 
 def improve():
-    global G, newObj, newBck, K, prObj, prBck, pn, intensities, lamb
-    mod_graph(G, newObj, newBck, pn, K, lamb, prObj, prBck, intensities)
+    global G, newObj, newBck, K, prObj, prBck, pn, intensities, lamb,\
+        minimorumBck, minimorumObj
+    mod_graph(G, newObj, newBck, pn, K, lamb, prObj, prBck,
+              (minimorumObj, minimorumBck), intensities)
     G_f = dinic(G, 's', 't')
     segments = min_cut(G_f, 's', 't')
     res = build_segmented(segments, size)
@@ -135,7 +168,9 @@ bck_pixels = set()
 newObj = set()
 newBck = set()
 prObj = {}
+minimorumObj = None
 prBck = {}
+minimorumBck = None
 
 line = []
 flag = ''
@@ -144,6 +179,7 @@ color = ''
 G = {}
 lamb = 1
 sigm = 1
+neigh = 4
 K = None
 
 app = Tk()
@@ -155,23 +191,42 @@ image_id = canvas.create_image(0, 0, anchor="nw")
 canvas.bind('<Button-1>', get_x_and_y)
 canvas.bind('<B1-Motion>', draw_line)
 
-btn = ttk.Button(app, text='Select file', command=select_image)
-btn1 = ttk.Button(app, text='Object pixels selection', command=flag_object)
-btn2 = ttk.Button(app, text='Background pixels selection',
-                  command=flag_background)
-btn3 = ttk.Button(app, text='RUN', command=segmentize)
-btn4 = ttk.Button(app, text="Add object pixels for improvement",
-                  command=flag_improve_object)
-btn5 = ttk.Button(app, text="Add background pixels for improvement",
-                  command=flag_improve_background)
-btn6 = ttk.Button(app, text='Improve segmentation', command=improve)
+btnframe = Frame(app)
+btnframe.pack()
+ttk.Button(btnframe, text='Select file', command=select_image).\
+    grid(row=0, column=1)
 
-btn.pack()
-btn1.pack()
-btn2.pack()
-btn3.pack()
-btn4.pack()
-btn5.pack()
-btn6.pack()
+ttk.Button(btnframe, text='Object pixels selection',
+           command=flag_object).grid(row=1, column=0)
+ttk.Button(btnframe, text='Background pixels selection',
+           command=flag_background).grid(row=1, column=2)
+ttk.Button(btnframe, text='RUN', command=segmentize).\
+    grid(row=2, column=1)
+
+ttk.Button(btnframe, text="Add object pixels for improvement",
+           command=flag_improve_object).grid(row=3, column=0)
+ttk.Button(btnframe, text="Add background pixels for improvement",
+           command=flag_improve_background).grid(row=3, column=2)
+ttk.Button(btnframe, text='Improve segmentation', command=improve)\
+    .grid(row=4, column=1)
+
+lambda_entry = Entry(btnframe)
+lambda_entry.grid(row=5, column=0)
+ttk.Button(btnframe, text='Change \u03BB', command=change_lamb).\
+    grid(row=6, column=0)
+
+sigma_entry = Entry(btnframe)
+sigma_entry.grid(row=5, column=2)
+ttk.Button(btnframe, text='Change \u03C3', command=change_sigm).\
+    grid(row=6, column=2)
+
+ttk.Button(btnframe, text='4 neighbours for pixels',
+           command=switch_neighbours4).grid(row=7, column=0)
+
+ttk.Button(btnframe, text='8 neighbours for pixels',
+           command=switch_neighbours8).grid(row=7, column=2)
 
 app.mainloop()
+print(lamb)
+print(sigm)
+print(neigh)

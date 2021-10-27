@@ -14,7 +14,7 @@ def add_antiparallel(G):
         for u in G[v]:
             if v not in G[u]:
                 G[u][v] = [0, 0]
-    print("Graph prepared")
+    # print("Graph prepared")
 
 
 # 2. max-flow utility

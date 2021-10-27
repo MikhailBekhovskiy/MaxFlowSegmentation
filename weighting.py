@@ -21,14 +21,14 @@ def boundary_penalty_dia(v, u, intensities, sigma=1):
 
 
 # component for weight of terminal edges
-def regional_penalty(histogram, intensities, v):
+def regional_penalty(histogram, intensities, v, worse_case_hist):
     probability = histogram[intensities[v]]
-    if probability > 0:
-        return -log(probability)
-    else:
-        return 1000000
+    if probability == 0:
+        probability = worse_case_hist
+    return -log(probability)
 
 
+# constants for weights
 def get_K(G, s, t):
     big = -1
     for v in G:
@@ -40,3 +40,11 @@ def get_K(G, s, t):
         if neighbouring_sum > big:
             big = neighbouring_sum
     return big + 1
+
+
+def worse_than_worst(histogram):
+    min = float('inf')
+    for inten in histogram:
+        if histogram[inten] < min and histogram[inten] != 0:
+            min = histogram[inten]
+    return min / 2

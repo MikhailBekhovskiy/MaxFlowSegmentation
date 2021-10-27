@@ -16,7 +16,7 @@ def boundary_penalty_dia(v, u, intensities, sigma=1):
     i_v = intensities[v]
     i_u = intensities[u]
     if i_v <= i_u:
-        return 1/sqrt(2)
+        return 1
     return exp(-((i_v - i_u)**2)/(2*(sigma**2)))/sqrt(2)
 
 
@@ -24,7 +24,7 @@ def boundary_penalty_dia(v, u, intensities, sigma=1):
 def regional_penalty(histogram, intensities, v):
     probability = histogram[intensities[v]]
     if probability > 0:
-        return -log(histogram[intensities[v]])
+        return -log(probability)
     else:
         return 1000000
 

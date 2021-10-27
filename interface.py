@@ -119,6 +119,9 @@ def segmentize():
     global fname, image, size, intensities, obj_pixels,\
          bck_pixels, prObj, prBck, G, lamb, sigm, neigh, K,\
          minimorumBck, minimorumObj
+    print(lamb)
+    print(sigm)
+    print(neigh)
     rel = pixel_node(size)
     obj = vertices(obj_pixels, rel)
     bck = vertices(bck_pixels, rel)
@@ -135,7 +138,8 @@ def segmentize():
     segments = min_cut(G_f, 's', 't')
     res = build_segmented(segments, size)
     fname = get_fname(file_path)
-    res.save(f'{save_path}' + fname + '.jpg')
+    res.save(f'{save_path}' + fname + '_' + str(int(lamb)) + 'l' +
+             str(int(sigm)) + 's' + str(neigh) + 'n' + '.jpg')
     canvas.image_tk = ImageTk.PhotoImage(res)
     canvas.itemconfigure(image_id, image=canvas.image_tk)
 
@@ -149,7 +153,8 @@ def improve():
     segments = min_cut(G_f, 's', 't')
     res = build_segmented(segments, size)
     fname = get_fname(file_path)
-    res.save(f'{save_path}' + fname + '.jpg')
+    res.save(f'{save_path}' + fname + '_' + str(int(lamb)) + 'l' +
+             str(int(sigm)) + 's' + str(neigh) + 'n' + '.jpg')
     canvas.image_tk = ImageTk.PhotoImage(res)
     canvas.itemconfigure(image_id, image=canvas.image_tk)
 
@@ -227,6 +232,3 @@ ttk.Button(btnframe, text='8 neighbours for pixels',
            command=switch_neighbours8).grid(row=7, column=2)
 
 app.mainloop()
-print(lamb)
-print(sigm)
-print(neigh)

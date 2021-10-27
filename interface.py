@@ -59,19 +59,20 @@ def flag_background():
 
 
 def segmentize():
-    global file_path, obj_pixels, bck_pixels, size, G
+    global file_path, save_path, obj_pixels, bck_pixels, size, G
     G = gen_graph(file_path, obj_pixels, bck_pixels, neighbours=8)
     G_f = dinic(G, 's', 't')
     segments = min_cut(G_f, 's', 't')
     res = build_segmented(segments, size)
     fname = get_fname(file_path)
-    res.save(fname + '.jpg')
+    res.save(f'{save_path}' + fname + '.jpg')
 
 
 app = Tk()
 app.geometry('650x650')
 obj_pixels = set()
 bck_pixels = set()
+save_path = '/home/mike/Desktop/graphproject/my_proj/segmented_images/'
 file_path = ''
 size = ()
 line = []

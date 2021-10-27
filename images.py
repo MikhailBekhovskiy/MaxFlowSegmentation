@@ -18,14 +18,6 @@ def get_fname(fpath):
     return res
 
 
-def load_image(fname):
-    return Image.open(fname)
-
-
-def get_pixels(image):
-    return image.load()
-
-
 def build_segmented(segmentation, size):
     pn = pixel_node(size)
     res = Image.new('1', size)
@@ -48,16 +40,6 @@ def pixel_node(size):
     return rel
 
 
-def node_pixel(size):
-    rel = {}
-    i = 1
-    for x in range(size[0]):
-        for y in range(size[1]):
-            rel[i] = (x, y)
-            i += 1
-    return rel
-
-
 def histogram(intensities, vertices):
     res = {}
     for i in range(256):
@@ -76,7 +58,8 @@ def vertices(coords, rel):
     return res
 
 
-def node_intensities(size, rel, pixels):
+def node_intensities(size, pixels):
+    rel = pixel_node(size)
     res = {}
     for x in range(size[0]):
         for y in range(size[1]):
@@ -156,38 +139,45 @@ def graph_skeleton_8(relation, size, intensities, sigma=1):
     return G
 
 
-def gen_graph(fname, hard_obj={(0, 0)}, hard_bck={(0, 1)}, neighbours=4,
+def gen_graph(image, obj, bck, prObj, prBck, intenses, neighbours=4,
               lamb=1, sigma=1):
-    image = load_image(fname)
     size = image.size
     pixels = image.load()
     rel_pn = pixel_node(size)
-    Obj = vertices(hard_obj, rel_pn)
-    Bck = vertices(hard_bck, rel_pn)
-    intenses = node_intensities(size, rel_pn, pixels)
-    pr_obj = histogram(intenses, Obj)
-    pr_bck = histogram(intenses, Bck)
     if neighbours == 4:
         G = graph_skeleton_4(rel_pn, size, intenses, sigma)
     elif neighbours == 8:
         G = graph_skeleton_8(rel_pn, size, intenses, sigma)
     K = get_K(G, 's', 't')
     for v in G['s']:
-        if v in Obj:
+        if v in obj:
             G['s'][v][0] = K
-        elif v in Bck:
+        elif v in bck:
             G['s'][v][0] = 0
         else:
-            G['s'][v][0] = lamb * regional_penalty(pr_bck, intenses, v)
+            G['s'][v][0] = lamb * regional_penalty(prBck, intenses, v)
     for v in G:
         if v != 's' and v != 't':
-            if v in Obj:
+            if v in obj:
                 G[v]['t'][0] = 0
-            elif v in Bck:
+            elif v in bck:
                 G[v]['t'][0] = K
             else:
-                G[v]['t'][0] = lamb * regional_penalty(pr_obj, intenses, v)
-    return G
+                G[v]['t'][0] = lamb * regional_penalty(prObj, intenses, v)
+    return G, K
+
+
+def mod_graph(G, newObj, newBck, rel_pn, K, lamb, prObj, prBck, intensities):
+    for pix in newObj:
+        node = rel_pn[(pix[0], pix[1])]
+        G['s'][node][0] += K + lamb * regional_penalty(prObj, intensities,
+                                                       node)
+        G[node]['t'][0] += lamb * regional_penalty(prBck, intensities, node)
+    for pix in newBck:
+        node = rel_pn[(pix[0], pix[1])]
+        G['s'][node][0] += lamb * regional_penalty(prObj, intensities, node)
+        G[node]['t'][0] += K + lamb * regional_penalty(prBck, intensities,
+                                                       node)
 
 
 def check_prob(distr):

@@ -105,6 +105,8 @@ def segmentize():
     res = build_segmented(segments, size)
     fname = get_fname(file_path)
     res.save(f'{save_path}' + fname + '.jpg')
+    canvas.image_tk = ImageTk.PhotoImage(res)
+    canvas.itemconfigure(image_id, image=canvas.image_tk)
 
 
 def improve():
@@ -115,6 +117,8 @@ def improve():
     res = build_segmented(segments, size)
     fname = get_fname(file_path)
     res.save(f'{save_path}' + fname + '.jpg')
+    canvas.image_tk = ImageTk.PhotoImage(res)
+    canvas.itemconfigure(image_id, image=canvas.image_tk)
 
 
 # global variables.

@@ -1,3 +1,6 @@
+import time
+
+
 # 1. general utility
 # we modify graph so that skew function model of a flow is feasible:
 # for (u,v) that so (v,u) doesn't exist we add (v,u) with 0-capacity
@@ -176,17 +179,20 @@ def cleaning(L, sat):
     right_pass(L, Q_r)
     left_pass(L, Q_l)
     if L == {}:
-        print("End of phase")
+        # print("End of phase")
         return 'vanished'
     # print('Continuing phase')
     return 'continue'
 
 
 def dinic(G, s, t):
+    time1 = time.perf_counter()
     add_antiparallel(G)
     G_f = res_gen(G)
     L = lay_gen(G_f, s, t)
-    print('initialization done')
+    time2 = time.perf_counter()
+    print(f'initialization done in {time2 - time1}')
+    time1 = time.perf_counter()
     while L != {}:
         # print(L)
         path, val = get_path(L, G_f, s, t)
@@ -197,6 +203,8 @@ def dinic(G, s, t):
         res = cleaning(L, sat)
         if res == 'vanished':
             L = lay_gen(G_f, s, t)
+    time2 = time.perf_counter()
+    print(f'Max-flow found in {time2 - time1}')
     return G_f
 
 

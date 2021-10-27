@@ -54,7 +54,8 @@ def histogram(intensities, vertices):
 def vertices(coords, rel):
     res = set()
     for pixel in coords:
-        res.add(rel[(pixel[0], pixel[1])])
+        if (pixel[0], pixel[1]) in rel:
+            res.add(rel[(pixel[0], pixel[1])])
     return res
 
 

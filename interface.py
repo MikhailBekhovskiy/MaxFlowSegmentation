@@ -160,7 +160,7 @@ def improve():
 
 
 # global variables.
-save_path = '/home/mike/Desktop/graphproject/my_proj/segmented_images/'
+save_path = '/home/mike/Desktop/graphproject/my_proj/parametric_research/'
 file_path = ''
 fname = ''
 

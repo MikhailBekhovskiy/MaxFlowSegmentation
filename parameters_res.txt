@@ -1,0 +1,72 @@
+Comparing image-segments-320/cross-320.jpg and parametric_research/cross-gr-320_1l1s4n.jpg: 
+                Right/total ratio: 0.696	                Jaccard measure: 0.533
+
+Comparing image-segments-320/cross-320.jpg and parametric_research/cross-gr-320_5l1s4n.jpg: 
+                Right/total ratio: 0.678	                Jaccard measure: 0.513
+
+Comparing image-segments-320/cross-320.jpg and parametric_research/cross-gr-320_10l1s4n.jpg: 
+                Right/total ratio: 0.679	                Jaccard measure: 0.515
+
+Comparing image-segments-320/cross-320.jpg and parametric_research/cross-gr-320_15l1s4n.jpg: 
+                Right/total ratio: 0.681	                Jaccard measure: 0.516
+
+Comparing image-segments-320/cross-320.jpg and parametric_research/cross-gr-320_20l1s4n.jpg: 
+                Right/total ratio: 0.68	                Jaccard measure: 0.516
+
+Comparing image-segments-320/cross-320.jpg and parametric_research/cross-gr-320_1l5s4n.jpg: 
+                Right/total ratio: 0.695	                Jaccard measure: 0.532
+
+Comparing image-segments-320/cross-320.jpg and parametric_research/cross-gr-320_1l10s4n.jpg: 
+                Right/total ratio: 0.7	                Jaccard measure: 0.539
+
+Comparing image-segments-320/cross-320.jpg and parametric_research/cross-gr-320_1l15s4n.jpg: 
+                Right/total ratio: 0.707	                Jaccard measure: 0.547
+
+Comparing image-segments-320/cross-320.jpg and parametric_research/cross-gr-320_1l20s4n.jpg: 
+                Right/total ratio: 0.712	                Jaccard measure: 0.553
+
+Comparing image-segments-320/cross-320.jpg and parametric_research/cross-gr-320_1l1s8n.jpg: 
+                Right/total ratio: 0.692	                Jaccard measure: 0.529
+
+Comparing image-segments-320/cross-320.jpg and parametric_research/cross-gr-320_5l1s8n.jpg: 
+                Right/total ratio: 0.69	                Jaccard measure: 0.526
+
+Comparing image-segments-320/cross-320.jpg and parametric_research/cross-gr-320_1l5s8n.jpg: 
+                Right/total ratio: 0.692	                Jaccard measure: 0.529
+
+Comparing image-segments-320/stone1-320.jpg and parametric_research/stone1-gr-320_1l1s4n.jpg: 
+                Right/total ratio: 0.817	                Jaccard measure: 0.69
+
+Comparing image-segments-320/stone1-320.jpg and parametric_research/stone1-gr-320_5l1s4n.jpg: 
+                Right/total ratio: 0.813	                Jaccard measure: 0.685
+
+Comparing image-segments-320/stone1-320.jpg and parametric_research/stone1-gr-320_10l1s4n.jpg: 
+                Right/total ratio: 0.807	                Jaccard measure: 0.676
+
+Comparing image-segments-320/stone1-320.jpg and parametric_research/stone1-gr-320_15l1s4n.jpg: 
+                Right/total ratio: 0.802	                Jaccard measure: 0.67
+
+Comparing image-segments-320/stone1-320.jpg and parametric_research/stone1-gr-320_20l1s4n.jpg: 
+                Right/total ratio: 0.797	                Jaccard measure: 0.663
+
+Comparing image-segments-320/stone1-320.jpg and parametric_research/stone1-gr-320_1l5s4n.jpg: 
+                Right/total ratio: 0.83	                Jaccard measure: 0.71
+
+Comparing image-segments-320/stone1-320.jpg and parametric_research/stone1-gr-320_1l10s4n.jpg: 
+                Right/total ratio: 0.839	                Jaccard measure: 0.722
+
+Comparing image-segments-320/stone1-320.jpg and parametric_research/stone1-gr-320_1l15s4n.jpg: 
+                Right/total ratio: 0.843	                Jaccard measure: 0.729
+
+Comparing image-segments-320/stone1-320.jpg and parametric_research/stone1-gr-320_1l20s4n.jpg: 
+                Right/total ratio: 0.846	                Jaccard measure: 0.734
+
+Comparing image-segments-320/stone1-320.jpg and parametric_research/stone1-gr-320_1l1s8n.jpg: 
+                Right/total ratio: 0.824	                Jaccard measure: 0.7
+
+Comparing image-segments-320/stone1-320.jpg and parametric_research/stone1-gr-320_5l1s8n.jpg: 
+                Right/total ratio: 0.815	                Jaccard measure: 0.687
+
+Comparing image-segments-320/stone1-320.jpg and parametric_research/stone1-gr-320_1l5s8n.jpg: 
+                Right/total ratio: 0.842	                Jaccard measure: 0.728
+

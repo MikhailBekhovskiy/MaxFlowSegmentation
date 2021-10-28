@@ -33,9 +33,16 @@ ideal_list = ['image-segments-320/banana1-320.jpg',
 
 my_list = ['segmented_images/banana1-gr-320_1.0l5.0s4n.jpg',
            'segmented_images/banana1-gr-320_5l1s4n.jpg',
-           'segmented_images/banana1-gr-3201l1s8n.jpg',
+           'segmented_images/banana1-gr-320_1l1s4n.jpg',
+           'segmented_images/banana1-gr-320_1l1s8n.jpg',
            'segmented_images/banana2-gr-320_1l1s4n.jpg',
-           'segmented_images/banana3-gr-320.jpg',
+           'segmented_images/banana2-gr-320_1l1s8n.jpg',
+           'segmented_images/banana2-gr-320_1l5s4n.jpg',
+           'segmented_images/banana2-gr-320_5l1s4n.jpg',
+           'segmented_images/banana3-gr-320_1l1s4n.jpg',
+           'segmented_images/banana3-gr-320_1l1s8n.jpg',
+           'segmented_images/banana3-gr-320_1l5s4n.jpg',
+           'segmented_images/banana3-gr-320_5l1s4n.jpg',
            'segmented_images/book-gr-320_1l10s8n.jpg',
            'segmented_images/bool-gr-320_7l4s4n.jpg',
            'segmented_images/bush-gr-320_2l20s8n.jpg',
@@ -66,17 +73,37 @@ my_list = ['segmented_images/banana1-gr-320_1.0l5.0s4n.jpg',
            ]
 
 with open('seqmentation_adequacy.txt', 'a') as f:
-    img1_namelist = my_list[:3]
-    img2_name = ideal_list[0]
-    for fname in img1_namelist:
-        img1 = Image.open(fname)
-        img2 = Image.open(img2_name)
-        res = adequacy(img2, img1)
-        f.write(f'Comparison of {img2_name} and {fname}\n\
-                Right/total ratio: {res[0]}\tJaccard measure: {res[1]}\n\n')
-    for i in range(1, len(ideal_list)):
+    i = 0
+    j = 0
+    for j in range(4):
         img1 = Image.open(ideal_list[i])
-        img2 = Image.open(my_list[i+2])
-        res = adequacy(img1, img2)
-        f.write(f'Comparison of {ideal_list[i]} and {my_list[i+2]}:\n\
-                Right/total ratio: {res[0]}\tJaccard measure: {res[1]}\n\n')
+        img2 = Image.open(my_list[j])
+        result = adequacy(img1, img2)
+        f.write(f'Comparing {ideal_list[i]} and {my_list[j]}: \n\
+                Right/total ratio: {round(result[0], 3)}\t\
+                Jaccard measure: {round(result[1], 3)}\n\n')
+    i += 1
+    for j in range(4, 8):
+        img1 = Image.open(ideal_list[i])
+        img2 = Image.open(my_list[j])
+        result = adequacy(img1, img2)
+        f.write(f'Comparing {ideal_list[i]} and {my_list[j]}: \n\
+                Right/total ratio: {round(result[0], 3)}\t\
+                Jaccard measure: {round(result[1], 3)}\n\n')
+    i += 1
+    for j in range(8, 12):
+        img1 = Image.open(ideal_list[i])
+        img2 = Image.open(my_list[j])
+        result = adequacy(img1, img2)
+        f.write(f'Comparing {ideal_list[i]} and {my_list[j]}: \n\
+                Right/total ratio: {round(result[0], 3)}\t\
+                Jaccard measure: {round(result[1], 3)}\n\n')
+    i += 1
+    for j in range(12, len(my_list)):
+        img1 = Image.open(ideal_list[i])
+        img2 = Image.open(my_list[j])
+        result = adequacy(img1, img2)
+        f.write(f'Comparing {ideal_list[i]} and {my_list[j]}: \n\
+                Right/total ratio: {round(result[0], 3)}\t\
+                Jaccard measure: {round(result[1], 3)}\n\n')
+        i += 1

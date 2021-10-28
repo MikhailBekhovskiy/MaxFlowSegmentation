@@ -1,96 +1,117 @@
-Comparison of image-segments-320/banana1-320.jpg and segmented_images/banana1-gr-320_1.0l5.0s4n.jpg
-                Right/total ratio: 0.8000911458333333	Jaccard measure: 0.6667932677178171
+Comparing image-segments-320/banana1-320.jpg and segmented_images/banana1-gr-320_1.0l5.0s4n.jpg: 
+                Right/total ratio: 0.8	                Jaccard measure: 0.667
 
-Comparison of image-segments-320/banana1-320.jpg and segmented_images/banana1-gr-320_5l1s4n.jpg
-                Right/total ratio: 0.696796875	Jaccard measure: 0.5346801750494574
+Comparing image-segments-320/banana1-320.jpg and segmented_images/banana1-gr-320_5l1s4n.jpg: 
+                Right/total ratio: 0.697	                Jaccard measure: 0.535
 
-Comparison of image-segments-320/banana1-320.jpg and segmented_images/banana1-gr-3201l1s8n.jpg
-                Right/total ratio: 0.7878125	Jaccard measure: 0.6499097705594226
+Comparing image-segments-320/banana1-320.jpg and segmented_images/banana1-gr-320_1l1s4n.jpg: 
+                Right/total ratio: 0.736	                Jaccard measure: 0.582
 
-Comparison of image-segments-320/banana2-320.jpg and segmented_images/banana2-gr-320_1l1s4n.jpg:
-                Right/total ratio: 0.5152864583333333	Jaccard measure: 0.34706119656920353
+Comparing image-segments-320/banana1-320.jpg and segmented_images/banana1-gr-320_1l1s8n.jpg: 
+                Right/total ratio: 0.788	                Jaccard measure: 0.65
 
-Comparison of image-segments-320/banana3-320.jpg and segmented_images/banana3-gr-320.jpg:
-                Right/total ratio: 0.41846354166666666	Jaccard measure: 0.264593041445061
+Comparing image-segments-320/banana2-320.jpg and segmented_images/banana2-gr-320_1l1s4n.jpg: 
+                Right/total ratio: 0.515	                Jaccard measure: 0.347
 
-Comparison of image-segments-320/book-320.jpg and segmented_images/book-gr-320_1l10s8n.jpg:
-                Right/total ratio: 0.8389453125	Jaccard measure: 0.7225717457860916
+Comparing image-segments-320/banana2-320.jpg and segmented_images/banana2-gr-320_1l1s8n.jpg: 
+                Right/total ratio: 0.47	                Jaccard measure: 0.307
 
-Comparison of image-segments-320/bool-320.jpg and segmented_images/bool-gr-320_7l4s4n.jpg:
-                Right/total ratio: 0.6541741877256317	Jaccard measure: 0.4860764162489312
+Comparing image-segments-320/banana2-320.jpg and segmented_images/banana2-gr-320_1l5s4n.jpg: 
+                Right/total ratio: 0.531	                Jaccard measure: 0.362
 
-Comparison of image-segments-320/bush-320.jpg and segmented_images/bush-gr-320_2l20s8n.jpg:
-                Right/total ratio: 0.5478703161592506	Jaccard measure: 0.37728745735035457
+Comparing image-segments-320/banana2-320.jpg and segmented_images/banana2-gr-320_5l1s4n.jpg: 
+                Right/total ratio: 0.387	                Jaccard measure: 0.24
 
-Comparison of image-segments-320/ceramic-320.jpg and segmented_images/ceramic-gr-320_1l1s4n.jpg:
-                Right/total ratio: 0.8076692708333333	Jaccard measure: 0.6773869456487316
+Comparing image-segments-320/banana3-320.jpg and segmented_images/banana3-gr-320_1l1s4n.jpg: 
+                Right/total ratio: 0.413	                Jaccard measure: 0.26
 
-Comparison of image-segments-320/cross-320.jpg and segmented_images/cross-gr-320.jpg:
-                Right/total ratio: 0.7177327283372366	Jaccard measure: 0.5597372281104281
+Comparing image-segments-320/banana3-320.jpg and segmented_images/banana3-gr-320_1l1s8n.jpg: 
+                Right/total ratio: 0.47	                Jaccard measure: 0.307
 
-Comparison of image-segments-320/doll-320.jpg and segmented_images/doll-gr-3201l1s4n.jpg:
-                Right/total ratio: 0.48683388157894736	Jaccard measure: 0.3217319471089831
+Comparing image-segments-320/banana3-320.jpg and segmented_images/banana3-gr-320_1l5s4n.jpg: 
+                Right/total ratio: 0.531	                Jaccard measure: 0.361
 
-Comparison of image-segments-320/elefant-320.jpg and segmented_images/elefant-gr-320.jpg:
-                Right/total ratio: 0.8697526041666667	Jaccard measure: 0.7695240947893506
+Comparing image-segments-320/banana3-320.jpg and segmented_images/banana3-gr-320_5l1s4n.jpg: 
+                Right/total ratio: 0.291	                Jaccard measure: 0.17
 
-Comparison of image-segments-320/flower-320.jpg and segmented_images/flower-gr-320.jpg:
-                Right/total ratio: 0.5784635416666667	Jaccard measure: 0.40692838954329785
+Comparing image-segments-320/book-320.jpg and segmented_images/book-gr-320_1l10s8n.jpg: 
+                Right/total ratio: 0.839	                Jaccard measure: 0.723
 
-Comparison of image-segments-320/fullmoon-320.jpg and segmented_images/fullmoon-gr-320.jpg:
-                Right/total ratio: 0.9771986166007905	Jaccard measure: 0.9554138588991136
+Comparing image-segments-320/bool-320.jpg and segmented_images/bool-gr-320_7l4s4n.jpg: 
+                Right/total ratio: 0.654	                Jaccard measure: 0.486
 
-Comparison of image-segments-320/grave-320.jpg and segmented_images/grave-gr-320_1l3s8n.jpg:
-                Right/total ratio: 0.6028908079625293	Jaccard measure: 0.43152733615853245
+Comparing image-segments-320/bush-320.jpg and segmented_images/bush-gr-320_2l20s8n.jpg: 
+                Right/total ratio: 0.548	                Jaccard measure: 0.377
 
-Comparison of image-segments-320/llama-320.jpg and segmented_images/llama-gr-320_3l2s4n.jpg:
-                Right/total ratio: 0.37393127705627704	Jaccard measure: 0.22996031580961573
+Comparing image-segments-320/ceramic-320.jpg and segmented_images/ceramic-gr-320_1l1s4n.jpg: 
+                Right/total ratio: 0.808	                Jaccard measure: 0.677
 
-Comparison of image-segments-320/memorial-320.jpg and segmented_images/memorial-gr-320.jpg:
-                Right/total ratio: 0.47347043325526933	Jaccard measure: 0.3101613251192559
+Comparing image-segments-320/cross-320.jpg and segmented_images/cross-gr-320.jpg: 
+                Right/total ratio: 0.718	                Jaccard measure: 0.56
 
-Comparison of image-segments-320/music-320.jpg and segmented_images/music-gr-320_1l1s8n.jpg:
-                Right/total ratio: 0.8232942708333333	Jaccard measure: 0.6996602892520831
+Comparing image-segments-320/doll-320.jpg and segmented_images/doll-gr-3201l1s4n.jpg: 
+                Right/total ratio: 0.487	                Jaccard measure: 0.322
 
-Comparison of image-segments-320/person1-320.jpg and segmented_images/person1-gr-320_1l1s4n.jpg:
-                Right/total ratio: 0.42212239583333333	Jaccard measure: 0.2675254371559898
+Comparing image-segments-320/elefant-320.jpg and segmented_images/elefant-gr-320.jpg: 
+                Right/total ratio: 0.87	                Jaccard measure: 0.77
 
-Comparison of image-segments-320/person2-320.jpg and segmented_images/person2-gr-320_1l1s8n.jpg:
-                Right/total ratio: 0.48930989583333334	Jaccard measure: 0.32389825979779524
+Comparing image-segments-320/flower-320.jpg and segmented_images/flower-gr-320.jpg: 
+                Right/total ratio: 0.578	                Jaccard measure: 0.407
 
-Comparison of image-segments-320/person3-320.jpg and segmented_images/person3-gr-320_5l5s4n.jpg:
-                Right/total ratio: 0.7218896370023419	Jaccard measure: 0.5648100961400817
+Comparing image-segments-320/fullmoon-320.jpg and segmented_images/fullmoon-gr-320.jpg: 
+                Right/total ratio: 0.977	                Jaccard measure: 0.955
 
-Comparison of image-segments-320/person4-320.jpg and segmented_images/person4-gr-3201l1s4n.jpg:
-                Right/total ratio: 0.2858984375	Jaccard measure: 0.16679200565164878
+Comparing image-segments-320/grave-320.jpg and segmented_images/grave-gr-320_1l3s8n.jpg: 
+                Right/total ratio: 0.603	                Jaccard measure: 0.432
 
-Comparison of image-segments-320/person5-320.jpg and segmented_images/person5-gr-320_1l1s8n.jpg:
-                Right/total ratio: 0.5700380562060889	Jaccard measure: 0.39863862019550644
+Comparing image-segments-320/llama-320.jpg and segmented_images/llama-gr-320_3l2s4n.jpg: 
+                Right/total ratio: 0.374	                Jaccard measure: 0.23
 
-Comparison of image-segments-320/person6-320.jpg and segmented_images/person6-gr-320_1l1s4n.jpg:
-                Right/total ratio: 0.5615339578454333	Jaccard measure: 0.39036997842810045
+Comparing image-segments-320/memorial-320.jpg and segmented_images/memorial-gr-320.jpg: 
+                Right/total ratio: 0.473	                Jaccard measure: 0.31
 
-Comparison of image-segments-320/person7-320.jpg and segmented_images/person7-gr-320_1l1s4n.jpg:
-                Right/total ratio: 0.5460919203747072	Jaccard measure: 0.375602782615699
+Comparing image-segments-320/music-320.jpg and segmented_images/music-gr-320_1l1s8n.jpg: 
+                Right/total ratio: 0.823	                Jaccard measure: 0.7
 
-Comparison of image-segments-320/person8-320.jpg and segmented_images/person8-gr-320_1l7s8n.jpg:
-                Right/total ratio: 0.5402734375	Jaccard measure: 0.37011961786507536
+Comparing image-segments-320/person1-320.jpg and segmented_images/person1-gr-320_1l1s4n.jpg: 
+                Right/total ratio: 0.422	                Jaccard measure: 0.268
 
-Comparison of image-segments-320/scissors-320.jpg and segmented_images/scissors-gr-320.jpg:
-                Right/total ratio: 0.4458463541666667	Jaccard measure: 0.2868740522289899
+Comparing image-segments-320/person2-320.jpg and segmented_images/person2-gr-320_1l1s8n.jpg: 
+                Right/total ratio: 0.489	                Jaccard measure: 0.324
 
-Comparison of image-segments-320/sheep-320.jpg and segmented_images/sheep-gr-320_1l1s4n.jpg:
-                Right/total ratio: 0.7122072599531616	Jaccard measure: 0.5530449410106613
+Comparing image-segments-320/person3-320.jpg and segmented_images/person3-gr-320_5l5s4n.jpg: 
+                Right/total ratio: 0.722	                Jaccard measure: 0.565
 
-Comparison of image-segments-320/stone1-320.jpg and segmented_images/stone1-gr-320_6l1s8n.jpg:
-                Right/total ratio: 0.8085807291666667	Jaccard measure: 0.6786701784679949
+Comparing image-segments-320/person4-320.jpg and segmented_images/person4-gr-3201l1s4n.jpg: 
+                Right/total ratio: 0.286	                Jaccard measure: 0.167
 
-Comparison of image-segments-320/stone2-320.jpg and segmented_images/stone2-gr-320_1l2s4n.jpg:
-                Right/total ratio: 0.8043489583333333	Jaccard measure: 0.6727288567508113
+Comparing image-segments-320/person5-320.jpg and segmented_images/person5-gr-320_1l1s8n.jpg: 
+                Right/total ratio: 0.57	                Jaccard measure: 0.399
 
-Comparison of image-segments-320/teddy-320.jpg and segmented_images/teddy-gr-320_10l5s4n.jpg:
-                Right/total ratio: 0.9084681919642857	Jaccard measure: 0.8322874196393195
+Comparing image-segments-320/person6-320.jpg and segmented_images/person6-gr-320_1l1s4n.jpg: 
+                Right/total ratio: 0.562	                Jaccard measure: 0.39
 
-Comparison of image-segments-320/tennis-320.jpg and segmented_images/tennis-gr-320.jpg:
-                Right/total ratio: 0.507864238410596	Jaccard measure: 0.3403606102635229
+Comparing image-segments-320/person7-320.jpg and segmented_images/person7-gr-320_1l1s4n.jpg: 
+                Right/total ratio: 0.546	                Jaccard measure: 0.376
+
+Comparing image-segments-320/person8-320.jpg and segmented_images/person8-gr-320_1l7s8n.jpg: 
+                Right/total ratio: 0.54	                Jaccard measure: 0.37
+
+Comparing image-segments-320/scissors-320.jpg and segmented_images/scissors-gr-320.jpg: 
+                Right/total ratio: 0.446	                Jaccard measure: 0.287
+
+Comparing image-segments-320/sheep-320.jpg and segmented_images/sheep-gr-320_1l1s4n.jpg: 
+                Right/total ratio: 0.712	                Jaccard measure: 0.553
+
+Comparing image-segments-320/stone1-320.jpg and segmented_images/stone1-gr-320_6l1s8n.jpg: 
+                Right/total ratio: 0.809	                Jaccard measure: 0.679
+
+Comparing image-segments-320/stone2-320.jpg and segmented_images/stone2-gr-320_1l2s4n.jpg: 
+                Right/total ratio: 0.804	                Jaccard measure: 0.673
+
+Comparing image-segments-320/teddy-320.jpg and segmented_images/teddy-gr-320_10l5s4n.jpg: 
+                Right/total ratio: 0.908	                Jaccard measure: 0.832
+
+Comparing image-segments-320/tennis-320.jpg and segmented_images/tennis-gr-320.jpg: 
+                Right/total ratio: 0.508	                Jaccard measure: 0.34
 

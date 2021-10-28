@@ -192,6 +192,22 @@ def check_prob(distr):
         sum += distr[item]
     return sum
 
+
+def adequacy(img1, img2):
+    px1 = img1.load()
+    px2 = img2.load()
+    size = img1.size
+    total = size[0] * size[1]
+    success = 0
+    for x in range(size[0]):
+        for y in range(size[1]):
+            if px1[x, y][0] == px2[x, y]:
+                success += 1
+    banal = success / total
+    failure = total - success
+    jaccard = success / (success + 2 * failure)
+    return banal, jaccard
+
 # print(len(G))
 # image = load_image('cross-gr-320.jpg')
 # size = image.size

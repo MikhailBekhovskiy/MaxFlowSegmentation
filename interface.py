@@ -232,3 +232,4 @@ ttk.Button(btnframe, text='8 neighbours for pixels',
            command=switch_neighbours8).grid(row=7, column=2)
 
 app.mainloop()
+print(lamb)

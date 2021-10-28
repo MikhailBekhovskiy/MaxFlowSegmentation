@@ -72,7 +72,7 @@ my_list = ['segmented_images/banana1-gr-320_1.0l5.0s4n.jpg',
            'segmented_images/tennis-gr-320.jpg'
            ]
 
-with open('seqmentation_adequacy.txt', 'a') as f:
+with open('segmentation_adequacy.txt', 'a') as f:
     i = 0
     j = 0
     for j in range(4):
